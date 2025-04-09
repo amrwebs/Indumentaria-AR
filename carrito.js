@@ -1,8 +1,7 @@
 const carritoContainer = document.getElementById("carrito-container");
 const totalCarrito = document.getElementById("total-carrito");
 
-// Obtener productos del carrito desde localStorage
-const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 function renderCarrito() {
   carritoContainer.innerHTML = "";
