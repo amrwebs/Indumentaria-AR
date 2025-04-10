@@ -26,7 +26,6 @@ function cambiarImagen(direccion) {
   mostrarImagen(indiceActual + direccion);
 }
 
-// Crear miniaturas
 producto.imagenes.forEach((src, index) => {
   const mini = document.createElement("img");
   mini.src = src;
@@ -35,5 +34,36 @@ producto.imagenes.forEach((src, index) => {
   miniaturas.appendChild(mini);
 });
 
-// Mostrar la primera imagen al cargar
 mostrarImagen(0);
+
+// Formulario comprador
+document.getElementById('form-comprador').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const datos = {
+    nombre: document.getElementById('nombre').value,
+    domicilio: document.getElementById('domicilio').value,
+    localidad: document.getElementById('localidad').value,
+    codigoPostal: document.getElementById('codigo-postal').value,
+    telefono: document.getElementById('telefono').value,
+    correo: document.getElementById('correo').value,
+    producto: producto.nombre,
+    precio: producto.precio
+  };
+
+  console.log("Enviando datos:", datos);  // Debug
+
+  try {
+    const respuesta = await fetch('http://localhost:5000/datos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos)
+    });
+
+    const resultado = await respuesta.json();
+    alert(resultado.mensaje);
+  } catch (error) {
+    console.error(error);
+    alert('Error al enviar los datos');
+  }
+});
