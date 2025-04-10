@@ -51,10 +51,10 @@ document.getElementById('form-comprador').addEventListener('submit', async funct
     precio: producto.precio
   };
 
-  console.log("Enviando datos:", datos);  // Debug
+  console.log("Enviando datos:", datos);
 
   try {
-    const respuesta = await fetch('192.168.1.80', {
+    const respuesta = await fetch('http://192.168.1.80:5000/datos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(datos)
@@ -63,7 +63,7 @@ document.getElementById('form-comprador').addEventListener('submit', async funct
     const resultado = await respuesta.json();
     alert(resultado.mensaje);
   } catch (error) {
-    console.error(error);
-    alert('Error al enviar los datos');
+    console.error("Error al enviar datos:", error);
+    alert('❌ Error al enviar los datos. Asegurate de que el servidor Flask esté corriendo.');
   }
 });
