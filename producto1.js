@@ -12,7 +12,7 @@ document.getElementById("nombre-producto").textContent = producto.nombre;
 document.getElementById("precio-producto").textContent = `$${producto.precio.toLocaleString()}`;
 document.getElementById("descripcion-producto").textContent = producto.descripcion;
 
-// Carrusel
+// Carrusel de imágenes
 let indiceActual = 0;
 const imgPrincipal = document.getElementById("img-principal");
 const miniaturas = document.getElementById("miniaturas");
@@ -36,7 +36,7 @@ producto.imagenes.forEach((src, index) => {
 
 mostrarImagen(0);
 
-// Formulario comprador
+// Formulario de envío
 document.getElementById('form-comprador').addEventListener('submit', async function(e) {
   e.preventDefault();
 
@@ -51,10 +51,10 @@ document.getElementById('form-comprador').addEventListener('submit', async funct
     precio: producto.precio
   };
 
-  console.log("Enviando datos:", datos);
+  console.log("📨 Enviando datos:", datos);
 
   try {
-    const respuesta = await fetch('http://192.168.1.80:5000/datos', {
+    const respuesta = await fetch('http://192.168.1.80:5000/datos', {  // Cambiar a IP local si accedés desde celular
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(datos)
@@ -63,7 +63,7 @@ document.getElementById('form-comprador').addEventListener('submit', async funct
     const resultado = await respuesta.json();
     alert(resultado.mensaje);
   } catch (error) {
-    console.error("Error al enviar datos:", error);
+    console.error("❌ Error al enviar datos:", error);
     alert('❌ Error al enviar los datos. Asegurate de que el servidor Flask esté corriendo.');
   }
 });
