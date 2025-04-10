@@ -54,16 +54,17 @@ document.getElementById('form-comprador').addEventListener('submit', async funct
   console.log("📨 Enviando datos:", datos);
 
   try {
-    const res = await fetch("https://indumentariaar-production.up.railway.app/datos", {  // Cambiar a IP local si accedés desde celular
+    const res = await fetch("https://indumentariaar-production.up.railway.app/datos", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(datos)
     });
 
-    const resultado = await respuesta.json();
+    const resultado = await res.json();  // 🔧 corregido aquí
     alert(resultado.mensaje);
   } catch (error) {
     console.error("❌ Error al enviar datos:", error);
     alert('❌ Error al enviar los datos. Asegurate de que el servidor Flask esté corriendo.');
   }
 });
+
