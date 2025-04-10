@@ -54,7 +54,7 @@ document.getElementById('form-comprador').addEventListener('submit', async funct
   console.log("Enviando datos:", datos);  // Debug
 
   try {
-    const respuesta = await fetch('http://localhost:5000/datos', {
+    const respuesta = await fetch('192.168.1.80', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(datos)
