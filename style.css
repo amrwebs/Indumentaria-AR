@@ -3,50 +3,176 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #1e1e1e;
   color: #f1f1f1;
   padding: 20px;
 }
-header {
+
+/* HEADER */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: #121212;
-  color: white;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
-h1 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
+.logo {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.redes {
+  display: flex;
+  gap: 15px;
+  font-size: 1.5rem;
+}
+
+.redes a {
+  text-decoration: none;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.redes a:hover {
+  color: #4caf50;
+  transform: scale(1.2);
+}
+
+#menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2e2e2e;
+  padding: 12px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+#menu-toggle {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  transition: background 0.2s ease;
+}
+
+#menu-toggle:hover {
+  background: #43a047;
+}
+
+#menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+#menu-list li a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-size: 1rem;
+  background-color: #3a3a3a;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  display: block;
+  text-align: center;
+}
+
+#menu-list li a:hover {
+  background-color: #4caf50;
+}
+
+@media (min-width: 600px) {
+  #menu {
+    flex-wrap: nowrap;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+
+  #menu-list {
+    display: flex !important;
+    flex-direction: row;
+    gap: 20px;
+    width: auto;
+    margin-left: auto;
+  }
+
+  #menu-list li a {
+    background: none;
+    padding: 8px 12px;
+    text-align: right;
+  }
+
+  #menu-list li a:hover {
+    background-color: transparent;
+    color: #4caf50;
+  }
+}
+
+#menu-list.hidden {
+  display: none;
+}
+
+
+/* PRODUCTOS */
 #product-list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
   margin-top: 24px;
 }
+
 @media (min-width: 600px) {
   #product-list {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }
+
 .product-card {
-  background: #2a2a2a;
+  background: #252525;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
 }
+
 .product-card:hover {
   transform: scale(1.01);
 }
+
 .product-card img {
   width: 100%;
   height: auto;
@@ -55,21 +181,25 @@ h1 {
   display: block;
   border-bottom: 1px solid #444;
 }
+
 .product-info {
   padding: 18px 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+
 .product-info h2 {
   font-size: 1.25rem;
   color: #ffffff;
 }
+
 .price {
   color: #4caf50;
   font-weight: bold;
   font-size: 1.1rem;
 }
+
 button {
   background: #4caf50;
   color: white;
@@ -80,9 +210,12 @@ button {
   cursor: pointer;
   transition: background 0.2s ease;
 }
+
 button:hover {
   background: #43a047;
 }
+
+/* FOOTER */
 footer {
   margin-top: 40px;
   text-align: center;
@@ -90,39 +223,16 @@ footer {
   padding-top: 24px;
   font-size: 1rem;
   color: #aaaaaa;
-  border-top: 1px solid #333;
+  border-top: 1px solid #232323;
+}
+.icono-red {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-#menu {
-  margin: 20px 0;
-}
-
-#menu-toggle {
-  background: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-#menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0 0;
-}
-
-#menu-list.hidden {
-  display: none;
-}
-
-#menu-list li a {
-  color: #f1f1f1;
-  text-decoration: underline;
-  font-size: 1rem;
-}
-
-#menu-list li a:hover {
-  color: #4caf50;
+.icono-red:hover {
+  transform: scale(1.2);
+  filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(90deg);
 }

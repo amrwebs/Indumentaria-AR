@@ -1,0 +1,137 @@
+body {
+    background-color: #1e1e1e;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f1f1f1;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .producto-card {
+    background: #252525;
+    border-radius: 20px;
+    padding: 24px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .galeria {
+    position: relative;
+  }
+  
+  .carrusel {
+    position: relative;
+  }
+  
+  .carrusel img {
+    width: 100%;
+    border-radius: 16px;
+    max-height: 400px;
+    object-fit: cover;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: #4caf50;
+    font-size: 2rem;
+    padding: 0 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+  
+  .prev:hover, .next:hover {
+    background: rgba(0,0,0,0.7);
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  .miniaturas {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  
+  .miniaturas img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .miniaturas img:hover {
+    border: 2px solid #4caf50;
+  }
+  
+  .info-producto h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+  
+  .precio {
+    color: #4caf50;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .descripcion {
+    margin-top: 10px;
+    line-height: 1.5;
+    color: #dddddd;
+  }
+
+
+  
+  .btn-comprar {
+    background-color: #4caf50;
+    border: none;
+    padding: 14px 24px;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 14px;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s ease;
+  }
+  
+  .btn-comprar:hover {
+    background-color: #43a047;
+  }
+  
+  @media (max-width: 600px) {
+    .producto-card {
+      padding: 16px;
+    }
+  
+    .btn-comprar {
+      font-size: 1rem;
+    }
+  
+    .miniaturas img {
+      width: 48px;
+      height: 48px;
+    }
+  }
+  

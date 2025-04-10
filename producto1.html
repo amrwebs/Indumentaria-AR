@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="titulo-pagina">Producto</title>
+  <link rel="stylesheet" href="producto1.css" />
+</head>
+<body>
+
+  <main class="producto-card">
+    <div class="galeria">
+      <div class="carrusel">
+        <img id="img-principal" src="" alt="Producto" />
+        <button class="prev" onclick="cambiarImagen(-1)">‹</button>
+        <button class="next" onclick="cambiarImagen(1)">›</button>
+      </div>
+      <div class="miniaturas" id="miniaturas"></div>
+    </div>
+
+    <div class="info-producto">
+      <h1 id="nombre-producto"></h1>
+      <p class="precio" id="precio-producto"></p>
+      <p>Envio: $7500</p>
+      <p class="descripcion" id="descripcion-producto"></p>
+      <a id="boton-compra" href="#" target="_blank">
+        <button class="btn-comprar">Comprar ahora</button>
+      </a>
+    </div>
+  </main>
+
+  <script src="producto1.js"></script>
+</body>
+</html>

@@ -1,17 +1,14 @@
 const productos = [
-  { id: 1, nombre: "Camiseta ROMA 24/25", precio: 49.99, imagen: "img/roma.jpg" },
-  { id: 2, nombre: "Camiseta River 1996", precio: 34.99, imagen: "img/river.jpg" },
-  { id: 3, nombre: "Camiseta BOCA 1996", precio: 19.99, imagen: "img/BOCA.png" },
+  { id: 1, nombre: "Camiseta ROMA 24/25", precio: 49999, imagen: "img/roma.jpg", link: "producto1.html" },
+  { id: 2, nombre: "Camiseta River 1996", precio: 34999, imagen: "img/sinstock.jpg", link: "https://mpago.la/linkriver" },
+  { id: 3, nombre: "Camiseta BOCA 1996", precio: 19999, imagen: "img/sinstock.jpg", link: "https://mpago.la/linkboca" },
+  { id: 4, nombre: "Camiseta de Unión", precio: 19999, imagen: "img/sinstock.jpg", link: "https://mpago.la/linkunion" }
 ];
 
 const productList = document.getElementById("product-list");
-const cartCount = document.getElementById("cart-count");
-const totalDisplay = document.getElementById("total");
-
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 function renderProductos() {
-  productList.innerHTML = ""; // Limpia antes de renderizar
+  productList.innerHTML = "";
   productos.forEach((producto) => {
     const card = document.createElement("div");
     card.classList.add("product-card");
@@ -19,42 +16,21 @@ function renderProductos() {
       <img src="${producto.imagen}" alt="${producto.nombre}" />
       <div class="product-info">
         <h2>${producto.nombre}</h2>
-        <p class="price">$${producto.precio}</p>
-        <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
+        <p class="price">$${producto.precio.toLocaleString()}</p>
+        <a href="${producto.link}" target="_blank">
+          <button>Comprar ahora</button>
+        </a>
       </div>
     `;
     productList.appendChild(card);
   });
 }
 
-function agregarAlCarrito(id) {
-  const producto = productos.find((p) => p.id === id);
-  carrito.push(producto);
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  actualizarCarrito();
-
-  // Vibración (opcional, en móviles)
-  if (navigator.vibrate) {
-    navigator.vibrate(100);
-  }
-}
-
-function actualizarCarrito() {
-  if (cartCount) {
-    cartCount.textContent = carrito.length;
-  }
-  const total = carrito.reduce((sum, item) => sum + item.precio, 0);
-  if (totalDisplay) {
-    totalDisplay.textContent = total.toFixed(2);
-  }
-}
-
 renderProductos();
-actualizarCarrito();
 
+// Menú móvil
 const menuToggle = document.getElementById("menu-toggle");
 const menuList = document.getElementById("menu-list");
-
 menuToggle.addEventListener("click", () => {
   menuList.classList.toggle("hidden");
 });
