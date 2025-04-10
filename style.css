@@ -131,7 +131,7 @@ body {
   #menu-list li a {
     background: none;
     padding: 8px 12px;
-    text-align: right;
+    text-align: left;
   }
 
   #menu-list li a:hover {

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title id="titulo-pagina">Producto</title>
   <link rel="stylesheet" href="producto1.css" />
+  <link rel="icon" type="image/x-icon" href="./img/logoarpag.ico" />
 </head>
 <body>
 
@@ -21,12 +22,18 @@
     <div class="info-producto">
       <h1 id="nombre-producto"></h1>
       <p class="precio" id="precio-producto"></p>
-      <p>Envio: $7500</p>
+      <p>Envío: $7500</p>
       <p class="descripcion" id="descripcion-producto"></p>
-      <a id="boton-compra" href="#" target="_blank">
-        <button class="btn-comprar">Comprar ahora</button>
-      </a>
-    </div>
+
+      <!-- Botón de Mercado Pago -->
+      <div class="boton-mercado-pago">
+        <script 
+          src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+          data-preference-id="1100840325-e88e0c1d-fa74-428d-a12e-8a36f06d2b98"
+          data-source="button">
+        </script>
+      </div>
+      
   </main>
 
   <script src="producto1.js"></script>

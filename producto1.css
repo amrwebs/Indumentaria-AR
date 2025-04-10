@@ -135,3 +135,15 @@ body {
     }
   }
   
+  .boton-mercado-pago {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .boton-mercado-pago iframe {
+    border-radius: 14px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+  }
+  
