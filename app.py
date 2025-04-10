@@ -4,11 +4,10 @@ import smtplib
 from email.message import EmailMessage
 
 app = Flask(__name__)
-CORS(app)  # Habilita CORS para conexiones externas si accedés desde celular u otro dispositivo
+CORS(app)
 
-# Configuración del correo
 EMAIL_REMITENTE = 'comprasonlineindumentariaar@gmail.com'
-CONTRASENA_APP = 'qjrg etph silv cmuo'  # Contraseña de aplicación generada en tu cuenta Gmail
+CONTRASENA_APP = 'qjrg etph silv cmuo'
 EMAIL_DESTINO = 'rotelaacaatriel@gmail.com'
 
 def enviar_email(datos):
@@ -30,10 +29,8 @@ Código Postal: {datos['codigoPostal']}
 Teléfono: {datos['telefono']}
 Correo del comprador: {datos['correo']}
 """
-
     mensaje.set_content(contenido)
 
-    # Enviar el correo
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(EMAIL_REMITENTE, CONTRASENA_APP)
         smtp.send_message(mensaje)
