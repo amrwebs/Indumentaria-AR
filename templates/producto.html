@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Producto</title>
+  <link rel="stylesheet" href="/static/producto1.css" />
+</head>
+<body>
+<main class="producto-card">
+  <div class="galeria">
+    <div class="carrusel">
+      <img id="img-principal" src="" alt="Producto" />
+      <button class="prev" onclick="cambiarImagen(-1)">‹</button>
+      <button class="next" onclick="cambiarImagen(1)">›</button>
+    </div>
+    <div class="miniaturas" id="miniaturas"></div>
+  </div>
+  <div class="info-producto">
+    <h1 id="nombre-producto">Producto AR</h1>
+    <p class="precio" id="precio-producto">$15.000</p>
+    <p>Envío: $7500</p>
+    <p class="descripcion" id="descripcion-producto">Producto exclusivo de Indumentaria AR.</p>
+  </div>
+  <div class="datos-comprador">
+    <h2>Datos del comprador</h2>
+    <form id="form-comprador">
+      <input type="text" id="nombre" placeholder="Nombre y apellido" required>
+      <input type="text" id="domicilio" placeholder="Domicilio" required>
+      <input type="text" id="localidad" placeholder="Localidad" required>
+      <input type="text" id="codigo-postal" placeholder="Código Postal" required>
+      <input type="tel" id="telefono" placeholder="Teléfono" required>
+      <input type="email" id="correo" placeholder="Correo electrónico" required>
+      <button type="submit" class="btn-comprar">Enviar datos</button>
+    </form>
+  </div>
+</main>
+<script src="/static/producto1.js"></script>
+</body>
+</html>
