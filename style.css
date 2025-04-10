@@ -236,3 +236,23 @@ footer {
   transform: scale(1.2);
   filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(90deg);
 }
+
+.btn-volver {
+  display: inline-block;
+  background-color: transparent;
+  border: 2px solid #4caf50;
+  color: #4caf50;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-volver:hover {
+  background-color: #4caf50;
+  color: #fff;
+}
+
