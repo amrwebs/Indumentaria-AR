@@ -21,21 +21,25 @@ document.getElementById('form-compra').addEventListener('submit', function (e) {
     talle
   };
 
-  // Obtener la lista de clientes desde localStorage (si no hay, se crea un array vacío)
+  // Obtener la lista de clientes desde localStorage
   let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
 
-  // Agregar el nuevo cliente a la lista
+  // Agregar el nuevo cliente
   clientes.push(cliente);
 
-  // Guardar la lista actualizada de clientes en localStorage
+  // Guardar en localStorage
   localStorage.setItem('clientes', JSON.stringify(clientes));
 
-  // Mostrar mensaje de confirmación
+  // Confirmación visual
   alert('Compra confirmada! Redirigiendo a Mercado Pago...');
 
-  // Limpiar el formulario
+  // Limpiar formulario
   e.target.reset();
 
-  // Redirigir a Mercado Pago (cambiá el link por el real)
-  window.location.href = 'https://www.mercadopago.com.ar'; // ← Link de pago real
+  // Esperar un poquito antes de redirigir (para asegurar que se guarden los datos)
+  setTimeout(() => {
+    // 👉 CAMBIÁ ESTE LINK por el de tu botón de pago de Mercado Pago
+    window.location.href = 'https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=TU_LINK_REAL';
+  }, 500);
 });
+
