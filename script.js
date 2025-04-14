@@ -1,5 +1,5 @@
 const productos = [
-  { id: 1, nombre: "Camiseta ROMA 24/25", precio: 49999, imagen: "img/roma1.jpg", link: "productos/producto1/producto1.html" },
+  { id: 1, nombre: "Camiseta ROMA 24/25", precio: 49999, imagen: "img/PRODUCTO1-ROMA25/1.jpeg", link: "productos/producto1/producto1.html" },
   { id: 2, nombre: "Camiseta River 1996", precio: 34999, imagen: "img/sinstock.jpg", link: "https://mpago.la/linkriver" },
   { id: 3, nombre: "Camiseta BOCA 1996", precio: 19999, imagen: "img/sinstock.jpg", link: "https://mpago.la/linkboca" },
   { id: 4, nombre: "Camiseta de Unión", precio: 19999, imagen: "img/sinstock.jpg", link: "https://mpago.la/linkunion" }
