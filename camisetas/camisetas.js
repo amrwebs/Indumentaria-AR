@@ -1,8 +1,8 @@
 const productos = [
-    { id: 1, nombre: "Camiseta RIVER PRIMER UNIFORME 24/25", precio: 26000, imagen: "img/RIVER25.jpeg", link: "camisetas/river25.html", },
-    { id: 2, nombre: "Camiseta RIVER TERCER UNIFORME 24/25", precio: 26000 , imagen: "img/RIVERT25.jpeg", link: "camisetas/river-tercera25.html" },
-    { id: 3, nombre: "Camiseta BOCA UNIFORME 24/25", precio: 26000, imagen: "img/BOCA25.jpeg", link: "camisetas/boca25.html" },
-    { id: 4, nombre: "Camiseta BOCA TERCER UNIFORME 24/25", precio: 26000, imagen: "img/BOCAT25.jpeg", link: "camisetas/boca-tercera-25.html" }
+    { id: 1, nombre: "Camiseta RIVER PRIMER UNIFORME 24/25", precio: 26000, imagen: "img/RIVER25.JPEG", link: "camisetas/river25.html", },
+    { id: 2, nombre: "Camiseta RIVER TERCER UNIFORME 24/25", precio: 26000 , imagen: "img/RIVERT25.JPEG", link: "camisetas/river-tercera25.html" },
+    { id: 3, nombre: "Camiseta BOCA UNIFORME 24/25", precio: 26000, imagen: "img/BOCA25.JPEG", link: "camisetas/boca25.html" },
+    { id: 4, nombre: "Camiseta BOCA TERCER UNIFORME 24/25", precio: 26000, imagen: "img/BOCAT25.JPEG", link: "camisetas/boca-tercera-25.html" }
   ];
   
   const productList = document.getElementById("product-list");
