@@ -6,6 +6,113 @@
   <title>Campera Premium Negra - Indumentaria AR</title>
   <link rel="stylesheet" href="producto1.css" />
   <link rel="icon" type="image/x-icon" href="./img/logoarpag.ico">
+  <style>
+    /* Estilos básicos */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .info-producto {
+      background: #252525;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      color: #f1f1f1;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin: 10px 0;
+      color: #ffffff;
+    }
+
+    .precio {
+      font-size: 1.6rem;
+      color: #4caf50;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .envio {
+      font-size: 1rem;
+      color: #cccccc;
+      margin: 10px 0;
+    }
+
+    /* Estilo de los botones de talles */
+    .talles {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .talle {
+      width: 40px;
+      height: 40px;
+      background-color: #f0f0f0;
+      color: #333;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1rem;
+      position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .talle:hover {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .talle.seleccionado {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .talle.seleccionado::after {
+      content: "X";
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Estilo del botón de pago */
+    .btn-pagar {
+      background-color: #4caf50;
+      color: white;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-pagar:hover {
+      background-color: #43a047;
+    }
+  </style>
 </head>
 <body>
 
@@ -32,23 +139,44 @@
         <img src="./PRODUCTO1-ROMA25/3.JPEG" class="mini" onclick="cambiarImagen(this)">
       </div>
     </div>
+
     <div class="info-producto">
       <h2>Camiseta ROMA 2024/2025</h2>
-      <p><strong>Talles disponibles:</strong> S, M, L, XL</p>
+
+      
+      <!-- Selector de talles con la "X" que se marca al seleccionar -->
+      <div class="talles" id="selector-talles">
+        <div class="talle" data-talle="S">S</div>
+        <div class="talle" data-talle="M">M</div>
+        <div class="talle" data-talle="L">L</div>
+        <div class="talle" data-talle="XL">XL</div>
+      </div>
+
       <p class="precio">$46.000</p>
       <p class="envio">Envío a todo el país: $7.500</p>
-      <p>Luego de pagar, toque volver al sitio, y sera llevado a la pagina de "datos de envio".</p>
-      
+      <p>Luego de pagar, toque volver al sitio, y será llevado a la página de "datos de envío".</p>
 
-<script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-data-preference-id="1100840325-19d712c2-0c56-4e25-b7c0-6f4e6d7a7d50" data-source="button">
-</script>
-
-
+      <!-- Script de Mercado Pago -->
+      <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+      data-preference-id="1100840325-19d712c2-0c56-4e25-b7c0-6f4e6d7a7d50" data-source="button">
+      </script>
     </div>
   </main>
 
-
+  <script>
+    // Función para manejar la selección de talles
+    document.querySelectorAll('.talle').forEach(talle => {
+      talle.addEventListener('click', () => {
+        // Si el talle ya está seleccionado, lo deseleccionamos
+        if (talle.classList.contains('seleccionado')) {
+          talle.classList.remove('seleccionado');
+        } else {
+          // Si no está seleccionado, lo seleccionamos
+          talle.classList.add('seleccionado');
+        }
+      });
+    });
+  </script>
 
   <script src="producto1.js"></script>
 </body>
