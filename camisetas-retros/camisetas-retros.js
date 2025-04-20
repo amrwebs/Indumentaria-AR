@@ -7,7 +7,7 @@ const productos = [
   { id: 6, nombre: "Camiseta AFA SEGUNDO UNIFORME 1994", precio: 30500, imagen: "img/afa-1994-1.JPEG", link: "afa-1994.html" },
   { id: 7, nombre: "Camiseta BARCELONA PRIMER UNIFORME 2009", precio: 30500, imagen: "img/barcelona-2009-1.jpeg", link: "barcelona-2009.html" },
   { id: 8, nombre: "Camiseta NEWELL'S RETRO MARADONA (SIN STOCK)", precio: 34000, imagen: "img/sinstock.jpg", link: "newellsmaradona.html" },
-  { id: 9, nombre: "Camiseta LANÚS EDICIÓN ESPECIAL (SIN STOCK)", precio: 30000, imagen: "img/sinstock.jpeg", link: "lanusedicion.html" }
+  { id: 9, nombre: "Camiseta LANÚS EDICIÓN ESPECIAL (SIN STOCK)", precio: 30000, imagen: "img/sinstock.jpg", link: "lanusedicion.html" }
 ];
 
 const productList = document.getElementById("product-list");
