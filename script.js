@@ -1,8 +1,8 @@
 const productos = [
   { id: 1, nombre: "Camiseta ROMA 24/25", precio: 46000, imagen: "img/roma1.jpg", link: "productos/producto1/producto1.html" },
-  { id: 2, nombre: "Camiseta River 1996", precio: 34999, imagen: "img/sinstock.jpg", link: "https://mpago.la/linkriver" },
-  { id: 3, nombre: "Camiseta BOCA 1996", precio: 19999, imagen: "img/sinstock.jpg", link: "https://mpago.la/linkboca" },
-  { id: 4, nombre: "Camiseta de Unión", precio: 19999, imagen: "img/sinstock.jpg", link: "https://mpago.la/linkunion" }
+  { id: 2, nombre: "Camiseta AFA SUPLENTE 24/25", precio: 46000, imagen: "img/AFA-SUPLENTE-25.jpeg", link: "productos/producto1/producto2.html" },
+  { id: 3, nombre: "Camiseta ATLETICO DE MADRID", precio: 46000, imagen: "img/ATLETICO1.jpg", link: "productos/producto1/producto3.html" },
+  { id: 4, nombre: "Camiseta PALMEIRAS", precio: 46000, imagen: "img/palmeiras-23-1.jpg", link: "productos/producto1/producto4.html" }
 ];
 
 const productList = document.getElementById("product-list");
