@@ -1,5 +1,5 @@
 const productos = [
-  { id: 1, nombre: "Camiseta RIVER PRIMER UNIFORME 1996", precio: 30500, imagen: "img/1.JPEG", link: "river1996.html" },
+  { id: 1, nombre: "Camiseta RIVER PRIMER UNIFORME 1996", precio: 30500, imagen: "img/1.jpeg", link: "river1996.html" },
   { id: 2, nombre: "Camiseta RIVER PRIMER UNIFORME 1998", precio: 30500 , imagen: "img/river-1998-1.JPEG", link: "river1998.html" },
   { id: 3, nombre: "Camiseta BOCA PRIMER UNIFORME 2002", precio: 30500, imagen: "img/boca-2002-1.JPEG", link: "boca-2002.html" },
   { id: 4, nombre: "CAMISETA BOCA PRIMER UNIFORME 2007", precio: 30500, imagen: "img/boca-2007-1.JPEG", link: "boca-2007.html" },
