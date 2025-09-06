@@ -1,258 +1,121 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Mobile-first, monochrome theme (white/black/dark grays) */
+:root{
+  --bg:#0b0b0b; --card:#121212; --muted:#1a1a1a; --text:#f2f2f2; --sub:#bdbdbd;
+  --accent:#ffffff; --accent-2:#e5e5e5; --danger:#e24d4d;
+  --radius:16px; --shadow:0 6px 18px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial}
+.topbar{display:flex;align-items:center;gap:.75rem;padding:.6rem .9rem;position:sticky;top:0;background:#0d0d0d;z-index:10;border-bottom:1px solid #222}
+.brand-wrap{display:flex;align-items:center;gap:.6rem}
+.brand-logo{width:28px;height:28px;object-fit:contain;filter:grayscale(100%) brightness(1.6)}
+.brand{margin:0;font-size:1.25rem;letter-spacing:.5px}
+.brand span{color:var(--accent-2)}
+.icon-btn{background:transparent;border:1px solid #2a2a2a;color:var(--text);border-radius:12px;padding:.35rem .55rem}
+.tabs{display:flex;overflow:auto;border-bottom:1px solid #222;background:#0f0f0f}
+.tabs button{appearance:none;border:0;background:transparent;color:var(--sub);padding:.9rem 1rem;white-space:nowrap}
+.tabs button.active{color:var(--text);border-bottom:2px solid var(--accent)}
+main{padding:1rem;max-width:1100px;margin:0 auto}
+.tab{display:none} .tab.active{display:block}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:.8rem 0}
+.card{background:var(--card);border-radius:var(--radius);padding:.9rem 1rem;box-shadow:var(--shadow)}
+.card .label{color:var(--sub);font-size:.9rem}
+.card .value{font-size:1.6rem;margin-top:.25rem}
+.hero{margin-top:1rem;padding:1rem;border-radius:var(--radius);background:linear-gradient(145deg,#141414,#0e0e0e);box-shadow:var(--shadow);border:1px solid #222}
+
+.btn{background:transparent;border:1px solid #2a2a2a;color:var(--text);padding:.6rem .9rem;border-radius:12px}
+.btn.solid{background:#f2f2f2;border-color:#f2f2f2;color:#0b0b0b} /* texto oscuro para contraste */
+.btn.link{border-color:#2a2a2a;background:#101010}
+.btn:active{transform:translateY(1px)}
+
+.input, select{width:100%;padding:.65rem .75rem;border-radius:12px;border:1px solid #2a2a2a;background:#0f0f0f;color:var(--text)}
+.input::placeholder{color:#ffffff;opacity:.75} /* placeholders blancos */
+
+.row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin:.6rem 0}
+.row.end{justify-content:flex-end}
+.gap{gap:.6rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+
+.table-wrap{overflow:auto;margin-top:.6rem;border-radius:16px;box-shadow:var(--shadow)}
+.table{width:100%;border-collapse:separate;border-spacing:0;background:#0f0f0f;border-radius:16px;overflow:hidden}
+.table th,.table td{padding:.75rem;border-bottom:1px solid #222;text-align:left}
+.table th{color:#d6d6d6;font-weight:600;background:#121212;position:sticky;top:0}
+.table tbody tr:hover{background:#131313}
+
+.footer{padding:1.2rem;text-align:center;color:#a8a8a8;border-top:1px solid #222}
+.tip{background:#ffffff0f;border:1px dashed #ffffff2a;border-radius:12px;padding:.7rem 1rem;color:#dcdcdc}
+
+/* ---------- DIALOG (todo el texto blanco) ---------- */
+.dialog{border:0;border-radius:18px;padding:0;background:transparent}
+.dialog form{background:#0e0e0e;padding:1rem;border:1px solid #222;border-radius:18px;min-width:min(95vw,720px);color:#fff}
+.dialog h3,
+.dialog label,
+.dialog legend,
+.dialog .chip,
+.dialog .talle-item strong { color:#fff; }           /* títulos, labels, leyendas, chips, strong */
+.dialog input,
+.dialog select,
+.dialog button { color:#fff; }                        /* texto dentro de inputs/selects/botones (excepto .btn.solid) */
+fieldset{border:1px solid #222;border-radius:12px;margin:.6rem 0;padding:.6rem}
+legend{color:#fff}                                    /* leyenda blanca */
+.preview{max-width:140px;max-height:140px;border-radius:12px;border:1px solid #222;margin-top:.5rem;background:#111}
+.talles .chips{display:flex;gap:.4rem;margin:.4rem 0;flex-wrap:wrap}
+.chip{border:1px solid #2a2a2a;border-radius:999px;background:#0f0f0f;color:#fff;padding:.35rem .7rem}
+.talle-item{display:flex;align-items:center;gap:.5rem;margin:.4rem 0}
+.talle-item input{width:90px}
+
+.pill{display:none;margin-top:.6rem;background:#121212;border:1px solid #222;color:#eaeaea;border-radius:999px;padding:.5rem .9rem}
+.pill.show{display:inline-flex}
+
+.right{text-align:right}.bold{font-weight:700}
+.no-print{display:block}
+
+/* Receipt */
+.recibo{background:white;color:#111;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.2);max-width:900px;margin:1rem auto;padding:0;border:1px solid #ececec}
+.recibo-header{display:flex;align-items:center;gap:1rem;justify-content:space-between;background:#111;color:#fff;padding:1rem 1.2rem;border-radius:18px 18px 0 0}
+.recibo-logo{width:40px;height:40px;object-fit:contain;filter:grayscale(100%) brightness(2)}
+.recibo .negocio{font-size:1.2rem;font-weight:800;letter-spacing:.4px}
+.meta{opacity:.95;display:flex;gap:1rem;flex-wrap:wrap}
+.meta-sm{opacity:.9;font-size:.9rem;text-align:right}
+.recibo-tabla{width:100%;border-collapse:collapse}
+.recibo-tabla th,.recibo-tabla td{padding:.7rem;border-bottom:1px solid #e9e9e9}
+.recibo-actions{display:flex;gap:.6rem;padding:.9rem}
+
+@media print {.no-print{display:none} body{background:white} .recibo{box-shadow:none}}
+
+/* small screens */
+@media (min-width:740px){
+  .cards{grid-template-columns:repeat(4,1fr)}
+  .grid2{grid-template-columns:repeat(2,1fr)}
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #1e1e1e;
-  color: #f1f1f1;
-  padding: 20px;
+/* ----- Visibilidad en "Talles y stock" ----- */
+.talle-item input[type="number"]{
+  background:#fff;      /* fondo blanco */
+  color:#000;           /* texto negro */
+  border-color:#cfcfcf; /* borde claro */
 }
 
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #121212;
-  padding: 10px 20px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+.talle-item input[type="number"]:focus{
+  outline:2px solid #6aa9ff; /* anillo de foco visible */
+  border-color:#6aa9ff;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* (opcional) que las flechitas mantengan contraste en WebKit */
+.talle-item input[type="number"]::-webkit-inner-spin-button,
+.talle-item input[type="number"]::-webkit-outer-spin-button{
+  filter: invert(0); /* asegura iconos oscuros sobre fondo claro */
 }
 
-.logo {
-  height: 50px;
-  width: 50px;
-  object-fit: contain;
-}
-
-.header h1 {
-  font-size: 1.8rem;
-  color: #ffffff;
-}
-
-.redes {
-  display: flex;
-  gap: 15px;
-  font-size: 1.5rem;
-}
-
-.redes a {
-  text-decoration: none;
-  color: white;
-  transition: transform 0.2s;
-}
-
-.redes a:hover {
-  color: #4caf50;
-  transform: scale(1.2);
-}
-
-#menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2e2e2e;
-  padding: 12px 20px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-#menu-toggle {
-  background: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-bottom: 10px;
-  transition: background 0.2s ease;
-}
-
-#menu-toggle:hover {
-  background: #43a047;
-}
-
-#menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-}
-
-#menu-list li a {
-  color: #f1f1f1;
-  text-decoration: none;
-  font-size: 1rem;
-  background-color: #3a3a3a;
-  padding: 10px 14px;
-  border-radius: 8px;
-  transition: background 0.2s ease;
-  display: block;
-  text-align: center;
-}
-
-#menu-list li a:hover {
-  background-color: #4caf50;
-}
-
-@media (min-width: 600px) {
-  #menu {
-    flex-wrap: nowrap;
-  }
-
-  #menu-toggle {
-    display: none;
-  }
-
-  #menu-list {
-    display: flex !important;
-    flex-direction: row;
-    gap: 20px;
-    width: auto;
-    margin-left: auto;
-  }
-
-  #menu-list li a {
-    background: none;
-    padding: 8px 12px;
-    text-align: left;
-  }
-
-  #menu-list li a:hover {
-    background-color: transparent;
-    color: #4caf50;
-  }
-}
-
-#menu-list.hidden {
-  display: none;
-}
-
-
-/* PRODUCTOS */
-#product-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  margin-top: 24px;
-}
-
-@media (min-width: 600px) {
-  #product-list {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-}
-
-.product-card {
-  background: #252525;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.product-card:hover {
-  transform: scale(1.01);
-}
-
-.product-card img {
-  width: 100%;
-  height: auto;
-  max-height: 240px;
-  object-fit: cover;
-  display: block;
-  border-bottom: 1px solid #444;
-}
-
-.product-info {
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.product-info h2 {
-  font-size: 1.25rem;
-  color: #ffffff;
-}
-
-.price {
-  color: #4caf50;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-button {
-  background: #4caf50;
-  color: white;
-  border: none;
-  padding: 14px;
-  border-radius: 14px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-button:hover {
-  background: #43a047;
-}
-
-/* FOOTER */
-footer {
-  margin-top: 40px;
-  text-align: center;
-  font-weight: bold;
-  padding-top: 24px;
-  font-size: 1rem;
-  color: #aaaaaa;
-  border-top: 1px solid #232323;
-}
-.icono-red {
-  width: 28px;
-  height: 28px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.icono-red:hover {
-  transform: scale(1.2);
-  filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(90deg);
-}
-
-.btn-volver {
-  display: inline-block;
-  background-color: transparent;
-  border: 2px solid #4caf50;
-  color: #4caf50;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
-  margin-top: 20px;
-  text-align: center;
-}
-
-.btn-volver:hover {
-  background-color: #4caf50;
-  color: #fff;
+/* ----- Asegurar texto negro en recibo ----- */
+.recibo,
+.recibo th,
+.recibo td,
+.recibo .gracias,
+.recibo .negocio,
+.recibo .meta,
+.recibo .meta-sm {
+  color:#000 !important;   /* fuerza negro */
+  opacity:1 !important;    /* elimina cualquier opacidad */
 }
 

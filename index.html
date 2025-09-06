@@ -2,60 +2,239 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Indumentaria AR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>INDUMENTARIA R — Gestión</title>
+  <link rel="icon" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#0b1512">
 </head>
-<link rel="icon" type="image/x-icon" href="./img/logoarpag.ico">
 <body>
+<header class="topbar">
+  <button id="menuBtn" class="icon-btn" aria-label="Abrir menú">☰</button>
+  <div class="brand-wrap"><img class="brand-logo" src="assets/logo.png" alt="AR" /><h1 class="brand">INDUMENTARIA <span>R</span></h1></div>
+</header>
 
-  <!-- Encabezado bonito -->
-  <header class="header">
-    <div class="logo-container">
-      <h1>Indumentaria </h1>
-      <img src="./img/logo ar web.png" alt="Logo Indumentaria AR" class="logo">
+<nav id="tabs" class="tabs">
+  <button data-tab="dashboard" class="active">Inicio</button>
+  <button data-tab="productos">Productos</button>
+  <button data-tab="categorias">Categorías</button>
+  <button data-tab="vender">Vender</button>
+  <button data-tab="ventas">Ventas</button>
+  <button data-tab="comprobante">Comprobante</button>
+</nav>
+
+<!-- Aviso de persistencia (solo se muestra si Store.engine === 'memory') -->
+<div id="persistWarning" style="display:none;padding:.75rem 1rem;background:#402;color:#ffd;border-bottom:1px solid #633;">
+  ⚠️ Los datos no se están guardando de forma persistente (modo <b>memory</b>). Abrí el proyecto con
+  <b>Live Server</b> o un servidor local (<code>http://</code>) y verificá que <code>idb-keyval</code> cargue bien.
+</div>
+
+<main>
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="tab active">
+    <div class="cards">
+      <div class="card"><div class="label">Productos</div><div id="statProductos" class="value">0</div></div>
+      <div class="card"><div class="label">Stock total</div><div id="statStock" class="value">0</div></div>
+      <div class="card"><div class="label">Ventas</div><div id="statVentas" class="value">0</div></div>
+      <div class="card"><div class="label">Ingresos</div><div id="statIngresos" class="value">$0,00</div></div>
     </div>
-    <div class="redes">
-      <a href="https://www.instagram.com/indumentaria_ar2?igsh=MXhvazMwN3MyaGxuNw==" target="_blank" aria-label="Instagram">
-        <img src="./img/logo instagram.png" alt="Instagram" class="icono-red">
-      </a>
-      <a href="https://www.tiktok.com/@indumentaria_ar" target="_blank" aria-label="TikTok">
-        <img src="./img/logo-tiktok.png" alt="TikTok" class="icono-red">
-      </a>
-      <a href="https://www.youtube.com/@Indumentariaar/" target="_blank" aria-label="YouTube">
-        <img src="./img/yotube.png" alt="YouTube" class="icono-red">
-      </a>
+    <div class="hero">
+      <h2>Software de gestión — <span>INDUMENTARIA R</span></h2>
+      <p>Hecho por <strong>AMR WEBS</strong>. Buscá por código, gestioná stock y emití comprobantes al instante.</p>
+      <a href="https://github.com/amrwebs" class="btn link" target="_blank" rel="noopener">Ir a AMR WEBS</a>
     </div>
-  </header>
-  
+  </section>
 
-  <!-- Menú -->
-  <nav id="menu">
-    <button id="menu-toggle">☰ Menú</button>
-    <ul id="menu-list" class="hidden">
-      <li><a href="./camisetas/camisetas.html">Camisetas</a></li>
-      <li><a href="./camisetas-retros/camisetas-retros.html">Camisetas Retros</a></li>
-      <li><a href="./camperas/camperas.html">Camperas</a></li>
-      <li><a href="">⠀⠀⠀⠀⠀⠀⠀</a></li>
-      <li><a href="">⠀⠀⠀⠀⠀⠀⠀</a></li>
-      <li><a href="">⠀⠀⠀⠀⠀⠀⠀</a></li>
-      <li><a href="">⠀⠀⠀⠀⠀⠀⠀</a></li>
-      <li><a href="">⠀⠀⠀⠀⠀⠀⠀</a></li>
-      <li><a href="">⠀⠀⠀⠀⠀⠀⠀</a></li>
-      <li><a href="">⠀⠀⠀⠀⠀⠀⠀</a></li>
-      <li><a href="">⠀⠀⠀⠀⠀⠀⠀</a></li>
-      <li><a href="">⠀⠀⠀⠀⠀⠀⠀</a></li>
+  <!-- PRODUCTOS -->
+  <section id="productos" class="tab">
+    <div class="row gap">
+      <input id="buscar" class="input" placeholder="Buscar por SKU, nombre, color" />
+      <select id="filtroCategoria" class="input"></select>
+      <button id="btnFiltrar" class="btn">Filtrar</button>
+      <button id="btnNuevoProducto" class="btn solid">+ Nuevo producto</button>
+    </div>
 
+    <div class="table-wrap">
+      <table class="table" id="tablaProductos">
+        <thead><tr>
+          <th>ID</th><th>SKU</th><th>Nombre</th><th>Categoría</th><th>Color</th><th>Precio</th><th>Stock</th><th>Foto</th><th>Acciones</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
 
+  <!-- CATEGORIAS -->
+  <section id="categorias" class="tab">
+    <div class="row gap">
+      <button id="btnNuevaCategoria" class="btn solid">+ Nueva categoría</button>
+    </div>
+    <div class="table-wrap">
+      <table class="table" id="tablaCategorias">
+        <thead><tr><th>ID</th><th>Nombre</th><th>Productos</th><th>Acciones</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
 
+  <!-- VENDER -->
+  <section id="vender" class="tab">
+    <div class="row gap">
+      <input id="skuVenta" class="input" placeholder="SKU del producto (ej: CAM-001)" />
+      <select id="talleVenta" class="input"><option value="">Seleccione un talle</option></select>
+      <input id="cantidadVenta" type="number" min="1" class="input" value="1"/>
+    </div>
+    <div id="tip" class="tip">Tip: ingresá el <strong>SKU</strong> y elegí el talle; verás el stock disponible.</div>
+    <div class="row gap">
+      <button id="registrarVenta" class="btn solid">Registrar venta</button>
+      <button id="verVentas" class="btn">Ver ventas</button>
+    </div>
+    <div id="ventaInfo" class="pill"></div>
+  </section>
 
+  <!-- VENTAS -->
+  <section id="ventas" class="tab">
+    <div class="table-wrap">
+      <table class="table" id="tablaVentas">
+        <thead><tr><th>ID</th><th>Fecha</th><th>Total</th><th>Detalle</th><th>Comprobante</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
 
-    </ul>
-  </nav>
+  <!-- COMPROBANTE -->
+  <section id="comprobante" class="tab">
+    <form id="formNegocio" class="grid2">
+      <label>Nombre del negocio<input id="nbNombre" class="input" required></label>
+      <label>CUIT/CUIL<input id="nbCuit" class="input"></label>
+      <label>Dirección<input id="nbDir" class="input"></label>
+      <label>Ciudad<input id="nbCiudad" class="input"></label>
+      <label>Teléfono<input id="nbTel" class="input"></label>
+    </form>
+    <div class="row gap">
+      <button id="guardarNegocio" class="btn solid">Guardar</button>
+      <span class="tip">Estos datos aparecerán en los comprobantes.</span>
+    </div>
+  </section>
+</main>
 
-  <!-- Productos -->
-  <main id="product-list"></main>
+<footer class="footer">Aplicación propiedad de <strong>AMR WEBS</strong>. © Todos los derechos reservados.</footer>
 
-  <script src="script.js"></script>
+<!-- DIALOGS -->
+<dialog id="dlgProducto" class="dialog">
+  <form method="dialog" id="formProducto">
+    <h3 id="dlgProductoTitle">Nuevo producto</h3>
+    <div class="grid2">
+      <label>SKU*<input id="pSku" class="input" required></label>
+      <label>Nombre*<input id="pNombre" class="input" required></label>
+      <label>Categoría
+        <select id="pCategoria" class="input"></select>
+      </label>
+      <label>Color<input id="pColor" class="input"></label>
+      <label>Precio<input id="pPrecio" type="number" class="input" min="0" value="0"></label>
+    </div>
+
+    <fieldset class="talles">
+      <legend>Talles y stock</legend>
+      <div class="chips">
+        <button type="button" class="chip" data-size="XS">XS</button>
+        <button type="button" class="chip" data-size="S">S</button>
+        <button type="button" class="chip" data-size="M">M</button>
+        <button type="button" class="chip" data-size="L">L</button>
+        <button type="button" class="chip" data-size="XL">XL</button>
+        <button type="button" class="chip" data-size="XXL">XXL</button>
+      </div>
+      <div class="row">
+        <input id="pTalleCustom" class="input" placeholder="Talle personalizado (ej: XXXL)">
+        <button id="agregarTalle" type="button" class="btn">Agregar talle</button>
+      </div>
+      <div id="pTalles" class="talle-list"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Foto</legend>
+      <div class="row">
+        <input id="pFoto" type="file" accept="image/*" capture="environment" class="input">
+        <button id="tomarFoto" type="button" class="btn">Usar cámara</button>
+      </div>
+      <img id="previewFoto" class="preview" alt="Vista previa" />
+    </fieldset>
+
+    <menu class="row end">
+      <button value="cancel" class="btn">Cancelar</button>
+      <button id="guardarProducto" value="default" class="btn solid">Guardar</button>
+    </menu>
+  </form>
+</dialog>
+
+<dialog id="dlgCategoria" class="dialog">
+  <form method="dialog" id="formCategoria">
+    <h3>Nueva categoría</h3>
+    <label>Nombre<input id="cNombre" class="input" required></label>
+    <menu class="row end">
+      <button value="cancel" class="btn">Cancelar</button>
+      <button value="default" class="btn solid">Guardar</button>
+    </menu>
+  </form>
+</dialog>
+
+<!-- Receipt template -->
+<template id="tplRecibo">
+  <div class="recibo">
+    <div class="recibo-header"><img class="recibo-logo" src="assets/logo.png" alt="AR">
+      <div>
+        <div class="negocio" id="rNegocio">INDUMENTARIA R</div>
+        <div class="meta"><span id="rCuit"></span><span id="rDir"></span></div>
+        <div class="meta"><span id="rCiudad"></span><span id="rTel"></span></div>
+      </div>
+      <div class="recibo-num">
+        <div>Comprobante <strong id="rNum">#1</strong></div>
+        <div id="rFecha" class="meta-sm"></div>
+      </div>
+    </div>
+    <table class="recibo-tabla">
+      <thead><tr><th>Producto</th><th>SKU</th><th>Talle</th><th>Cant.</th><th>Precio</th><th>Subtotal</th></tr></thead>
+      <tbody id="rItems"></tbody>
+      <tfoot><tr><td colspan="5" class="right">Total</td><td id="rTotal" class="bold"></td></tr></tfoot>
+    </table>
+    <p class="gracias">¡Gracias por su compra!</p>
+    <div class="recibo-actions no-print">
+      <button class="btn" onclick="window.print()">Imprimir</button>
+      <button class="btn solid" id="btnDescargarPDF">Descargar</button>
+    </div>
+  </div>
+</template>
+
+<!-- Firebase (opcional) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+
+<!-- idb-keyval con fallback si falla jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/idb-keyval@6/dist/idb-keyval.iife.min.js"
+        onerror="(function(){var s=document.createElement('script');s.src='https://unpkg.com/idb-keyval@6/dist/idb-keyval.iife.min.js';document.head.appendChild(s);})();">
+</script>
+
+<!-- Librerías de recibo -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<!-- App -->
+<script src="config.js"></script>
+<script src="storage.js"></script>
+<script src="app.js"></script>
+
+<!-- Aviso de persistencia (memoria) -->
+<script>
+  // Mostramos el aviso si por alguna razón no hay persistencia
+  (function(){
+    function showWarn(){ var el = document.getElementById('persistWarning'); if(el) el.style.display='block'; }
+    // Esperamos a que storage/app inicialicen
+    window.addEventListener('load', function(){
+      try{
+        if (window.Store && Store.engine === 'memory') showWarn();
+      }catch(e){}
+    });
+  })();
+</script>
 </body>
 </html>
