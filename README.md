@@ -1,2 +1,0 @@
-# Indumentaria-AR
-Indumentaria AR
